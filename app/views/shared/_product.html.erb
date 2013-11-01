@@ -1,0 +1,32 @@
+<ul class="product-listing">
+  
+  
+
+  <h4><%= product.title %></h4>
+
+  <p class="category" style="font-size: 18px; line-height:30px">Category:
+    <%= product.category_name %>
+  </p>
+
+  <%= image_tag(product.image_url, class: 'list_image') %>
+
+  <p class="description" style="font-size: 13px; line-height:18px">
+  	<%= product.description %>
+  </p>
+
+    <% unless product.price.nil? %>
+        $<%= product.price %>
+      <br/>
+    <% end %>
+    
+  Posted by <%=product.user.name %>
+  <span class="timestamp">
+    (<%=product.user.email %>)
+  </span>
+
+  <% %>
+
+  <%= time_ago_in_words(product.created_at) %> ago.
+  <%= link_to 'contact', product, class: "btn " %><br/>
+
+</ul>

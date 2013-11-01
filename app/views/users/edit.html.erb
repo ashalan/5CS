@@ -1,0 +1,36 @@
+<div class="hero-unit span7 center-box">
+
+    <% provide(:title, "Edit user") %>
+    <h2>Update your profile</h2>
+
+    <div class="row">
+      <div class="span3">
+        <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+
+          <%= f.label :password_confirmation, "Confirm Password" %>
+          <%= f.password_field :password_confirmation %>
+
+          <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+        <% end %>
+
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails">change</a>
+      </div>
+      <div class="span3 no-account">
+        <div class="">
+          <p>  You must have a Columbia email address to sign up. This ensures that you're
+            dealing with members of the school community. </p>
+        </div>
+      </div>
+    </div>
+</div>

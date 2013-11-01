@@ -1,0 +1,22 @@
+<% if attachments.any? %>
+  <ul class="attachments">
+    <% attachments.each do |att| %>
+      <li id="attachment_<%= att.id %>">
+        <%= link_to att.filename, attachment_url(att), :title => 'Download' %> 
+        <%= link_to(image_tag('icons/page_white_magnify.png'), att.scribd_url, :id => att.scribd_doc_id, :rel => att.scribd_access_key, :class => 'scribd', :title => 'Preview') unless att.scribd_doc_id.blank? %> 
+      </li>
+    <% end %>
+  </ul>
+  
+  <div id="scribd" style="display:none; margin-top: 1em">
+    <a onclick="$('scribd').hide()">Close preview</a>
+    <div id="scribd_preview" style="margin-top: 2px">
+    
+    </div>
+  </div>
+  
+  <% content_for :head do %>
+    <script type="text/javascript" src='http://www.scribd.com/javascripts/view.js'></script>
+    <%= javascript_include_tag 'scribd.js' %>
+  <% end %>
+<% end %>

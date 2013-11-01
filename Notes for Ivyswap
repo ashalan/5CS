@@ -1,0 +1,31 @@
+Notes for Ivyswap
+
+- produc image_url (should we use an api like imgur or something for our image hosting??)
+
+- USER IMG use gravatar for now then hopefully be able to use Facebook
+
+-need to add catogory model functionality
+
+-see code academy for css/header
+	-add # items listed
+	-gravatar on header in drop down
+	-add breaks in header
+	-improve logo
+
+-improve email functionality
+	-add two step verification
+		-omniauth columbia email verification
+	-add drop down for message to sender
+	-change sender of email to something like reply_delete_to_delete@cx.org
+
+-improve listing drop down on front page 
+
+
+
+
+check out:
+backbone.js
+
+
+-About testing:
+	-add testing

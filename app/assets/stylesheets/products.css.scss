@@ -1,0 +1,56 @@
+.products {
+  table {
+    border-collapse: collapse;
+  }
+
+  table tr td {
+  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 400px;
+  
+  }
+
+  .list_image {
+    width:  120px;
+    height: 80px;
+    
+  }
+
+  .list_description {
+    width: 60%;
+    dl {
+      margin: 10;
+    }
+
+    dt {
+      
+      color:        #244;
+      font-weight:  bold;
+      font-size:    larger;
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  .list_actions {
+    font-size:    medium;
+    text-align:   right;
+    text-align: bottom;
+    padding-left: 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+  }
+
+  .list_line_even {
+    background:   #e0f8f8;
+  }
+  .list_line_odd {
+    background:   #75B2DD;
+  }
+}

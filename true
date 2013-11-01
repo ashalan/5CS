@@ -1,0 +1,2 @@
+==  AddPasswordDigestToUsers: migrating =======================================
+-- add_column(:users, :password_digest, :string)

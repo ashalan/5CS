@@ -1,0 +1,61 @@
+<h2>Listing Products</h2>
+
+<div class="products">
+  <table>
+    <% for product in @products %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    
+    
+        <td>
+          <%= image_tag(product.image_url, class: 'list_image') %>
+        </td>
+    
+    
+        <td class="list_description">
+          <dl>
+             <dt><%= product.title %></dt>
+             <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
+          </dl>
+        </td>
+    
+        <td class="list_actions">
+          <%= link_to 'Show', product %><br/>
+          <%= link_to 'Edit', edit_product_path(product) %><br/>
+          <%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %><br/>
+     </script>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <h4 class=sslink><%= link_to 'Search for ' + '"' + params[:search] + '"' +' on Scribd', '#', id: 'scribd_link', 'data-no-turbolink' => true %></h4><br/>
+  <div id="documents"></div>
+  <div id="page-number" style="display:none;">0</div>
+  <script type="text/javascript">
+  $(document).on('click', '#scribd_link', function() {
+    $.ajax({
+      url: 'scribd/find',
+      data: 'title=' + $('#search').val() + '&page=' + (parseInt($('#page-number').text()) + 1),
+      dataType: 'json',
+      success: function(response){
+      $(".sslink").hide();
+        if(response){
+          var up = '+00:00';
+
+          for (var i=0;i<response.documents.length;i++) {
+
+            $('#documents').append('<a id="Amer" href= "http://www.scribd.com/doc/' + response.documents[i].attributes.doc_id + '" target = "_blank"><div class="item"><img src= "'+response.documents[i].attributes.thumbnail_url + '"/><div><h6>' + response.documents[i].attributes.title + '</h6><br/><span>(' +response.documents[i].attributes.download_formats+')</span><p>' + response.documents[i].attributes.description + '</p><p>User: ' + response.documents[i].attributes.uploaded_by + '</p><p>Views:' + response.documents[i].attributes.reads +'</p><p id=when>' + $.timeago(Date.parse(response.documents[i].attributes.when_uploaded.replace(up, 'Z')))+'</p></div><br/></div></a>')
+            console.log(response.documents[i]);
+          }
+        $('#documents').after('<h4 class=sslink><%= link_to "Load more...", "#", id: "scribd_link", "data-no-turbolink" => true %></h4>');
+        $('#page-number').text(response.page)
+        }
+      }
+    });
+  })
+  </script>
+  </div>
+
+
+
+
+
